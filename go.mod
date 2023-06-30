@@ -1,4 +1,4 @@
-module github.com/go-leetcode
+module github.com/leetcode
 
 go 1.18
 
