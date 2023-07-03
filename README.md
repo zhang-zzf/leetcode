@@ -68,14 +68,14 @@ if __name__ == '__main__':
 
 # Custom Template
 ## FileName
-$!velocityTool.camelCaseName(${question.titleSlug})Test
+$!{q.frontendQuestionId}_${q.title}_test
 
 ## Template
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.BDDAssertions.then;
 
 
-public class $!velocityTool.camelCaseName(${question.titleSlug})Test {
+class $!velocityTool.camelCaseName(${question.titleSlug})Test {
 
     final Solution solution = new Solution();
 
