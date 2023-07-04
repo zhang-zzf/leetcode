@@ -28,16 +28,16 @@ class Solution:
             nn: int = 0
             if i < len(num1):
                 nn = int(num1[i])
-            sum = n + nn + promotion
-            if sum < 10:
+            s: int = n + nn + promotion
+            if s < 10:
                 promotion = 0
             else:
                 promotion = 1
-                sum -= 10
-            ans += str(sum)
+                s -= 10
+            ans = str(s) + ans
         if promotion:
-            ans += str(promotion)
-        return ans[::-1]
+            ans = str(promotion) + ans
+        return ans
 
 
 # leetcode submit region end(Prohibit modification and deletion)
