@@ -85,12 +85,15 @@ class AddStringsTest {
                     sum = sum - 10;
                 }
                 // char + int => int
-                sb.append((char) ('0' + sum));
+                // sb.append((char) ('0' + sum));
+                sb.insert(0, (char) ('0' + sum));
             }
             if (promotion == 1) {
-                sb.append((char) ('0' + promotion));
+                // sb.append((char) ('0' + promotion));
+                sb.insert(0, (char) ('0' + promotion));
             }
-            return sb.reverse().toString();
+            // return sb.reverse().toString();
+            return sb.toString();
         }
 
     }

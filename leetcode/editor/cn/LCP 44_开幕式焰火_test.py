@@ -24,9 +24,6 @@ class TreeNode:
 #         self.val = x
 #         self.left = None
 #         self.right = None
-def dfs():
-    pass
-
 
 class Solution:
     def numColor(self, root: TreeNode) -> int:

@@ -39,6 +39,14 @@ class NGK0FyTest {
         then(ans).isEqualTo(4);
     }
 
+    @Test
+    void givenString_whenIterate_then() {
+        // 7 个字符
+        String aStr = "你好World";
+        then(aStr.length()).isEqualTo(7);
+        then(aStr.charAt(0)).isEqualTo('你');
+    }
+
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
 
