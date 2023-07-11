@@ -27,7 +27,7 @@ class Solution:
             # watch out: can not use pairs[c]
             if pairs.get(c) is not None:
                 stack.append(c)
-            elif not len(stack) or c != pairs[stack.pop()]:
+            elif len(stack) == 0 or c != pairs[stack.pop()]:
                 ans = False
                 break
         if len(stack) != 0:
