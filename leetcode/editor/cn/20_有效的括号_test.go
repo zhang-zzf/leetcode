@@ -23,18 +23,15 @@ func isValid(s string) bool {
 	stack := list.New()
 	for _, r := range s {
 		// 判断 key 是否存在
-		_, exists := pairs[r]
-		if exists {
+		if _, exists := pairs[r]; exists {
 			stack.PushBack(r)
 		} else {
-			back := stack.Back()
 			// go nil
 			// back.Value 为 any (interface{})类型，强制转换为 rune 类型
-			if back == nil || r != pairs[back.Value.(rune)] {
+			if stack.Len() == 0 || r != pairs[stack.Remove(stack.Back()).(rune)] {
 				ans = false
 				break
 			}
-			stack.Remove(back)
 		}
 	}
 	if stack.Len() != 0 {

@@ -25,7 +25,7 @@ class Solution:
         stack: list[str] = []
         for c in s:
             # watch out: can not use pairs[c]
-            if pairs.get(c) is not None:
+            if c in pairs:
                 stack.append(c)
             elif len(stack) == 0 or c != pairs[stack.pop()]:
                 ans = False
