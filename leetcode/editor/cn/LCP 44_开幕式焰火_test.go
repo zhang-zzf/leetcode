@@ -9,12 +9,6 @@ func Test_givenNormal_whenLCP44_thenSuccess(t *testing.T) {
 	assert.Equal(t, 1, 1, "shouldEqual")
 }
 
-type TreeNode struct {
-	Val   int
-	Left  *TreeNode
-	Right *TreeNode
-}
-
 //leetcode submit region begin(Prohibit modification and deletion)
 /**
  * Definition for a binary tree node.
