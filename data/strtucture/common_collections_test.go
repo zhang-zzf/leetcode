@@ -14,11 +14,11 @@ Stack
 func Test_givenStack_when_thenSuccess(t *testing.T) {
 	stack := list.New()
 	// push
-	stack.PushBack(nil)
 	stack.PushBack(A)
+	stack.PushBack(nil)
 	// Peek
 	top := stack.Back()
-	assert.Equal(t, A, top.Value)
+	assert.Equal(t, nil, top.Value)
 	// Pop
 	for stack.Len() > 0 {
 		topVal := stack.Remove(stack.Back())
