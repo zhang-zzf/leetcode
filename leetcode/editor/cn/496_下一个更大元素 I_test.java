@@ -76,18 +76,11 @@ class NextGreaterElementITest {
             Deque<Integer> stack = new LinkedList<>();
             Map<Integer, Integer> mapping = new HashMap<>();
             for (int i = nums2.length - 1; i >= 0; i--) {
-                int bigger = -1;
-                int num = nums2[i];
-                while (!stack.isEmpty()) {
-                    Integer top = stack.pop();
-                    if (top > num) {
-                        bigger = top;
-                        stack.push(top);
-                        break;
-                    }
+                while (!stack.isEmpty() && stack.peek() <= nums2[i]) {
+                    stack.pop();
                 }
-                stack.push(num);
-                mapping.put(num, bigger);
+                mapping.put(nums2[i], stack.isEmpty() ? -1 : stack.peek());
+                stack.push(nums2[i]);
             }
             int[] ans = new int[nums1.length];
             for (int i = 0; i < nums1.length; i++) {

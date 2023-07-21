@@ -22,15 +22,10 @@ class Solution:
         stack: list[int] = []
         # reversed()
         for x in reversed(nums2):
-            bigger = -1
-            while len(stack) > 0:
-                top = stack.pop()
-                if top > x:
-                    bigger = top
-                    stack.append(top)
-                    break
+            while stack and stack[- 1] <= x:
+                stack.pop()
+            mapping[x] = stack[- 1] if stack else -1
             stack.append(x)
-            mapping[x] = bigger
         return [mapping[x] for x in nums1]
 
 
