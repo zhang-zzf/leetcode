@@ -12,7 +12,7 @@ func Test_givenNormal_when383_thenSuccess(t *testing.T) {
 //leetcode submit region begin(Prohibit modification and deletion)
 func canConstruct(ransomNote string, magazine string) bool {
 	ans := true
-	var mapping [26]rune
+	var mapping [26]int
 	for _, r := range magazine {
 		mapping[r-'a'] += 1
 	}

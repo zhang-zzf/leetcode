@@ -20,8 +20,9 @@ func Test_givenZero_when2269_thenSuccess(t *testing.T) {
 
 //leetcode submit region begin(Prohibit modification and deletion)
 func divisorSubstrings(num int, k int) int {
-	// num to string
-	// string to num
+	// TODO num to string
+	// TODO string to num
+	// TODO string as slice
 	ans := 0
 	numStr := strconv.FormatInt(int64(num), 10)
 	for i := 0; i <= len(numStr)-k; i++ {

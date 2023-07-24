@@ -15,8 +15,9 @@ class TestSolution(unittest.TestCase):
 class Solution:
     def divisorSubstrings(self, num: int, k: int) -> int:
         ans = 0
-        # num to string
-        # string to num
+        # TODO num to string
+        # TODO string to num
+        # TODO string as slice
         num_str: str = str(num)
         for idx in range(len(num_str) - k + 1):
             val: int = int(num_str[idx:idx + k])
