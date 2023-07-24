@@ -11,18 +11,16 @@ func Test_givenNormal_when2432_thenSuccess(t *testing.T) {
 
 //leetcode submit region begin(Prohibit modification and deletion)
 func hardestWorker(n int, logs [][]int) int {
-	worker, startTime, longestTask := 0, 0, 0
-	for _, log := range logs {
-		task := log[1] - startTime
-		if task > longestTask {
-			worker = log[0]
-			longestTask = task
-		} else if task == longestTask && log[0] < worker {
-			worker = log[0]
+	ans, maxCost := logs[0][0], logs[0][1]
+	for i := 1; i < len(logs); i++ {
+		idx := logs[i][0]
+		cost := logs[i][1] - logs[i-1][1]
+		if cost > maxCost || (cost == maxCost && idx < ans) {
+			ans = idx
+			maxCost = cost
 		}
-		startTime = log[1]
 	}
-	return worker
+	return ans
 }
 
 //leetcode submit region end(Prohibit modification and deletion)
