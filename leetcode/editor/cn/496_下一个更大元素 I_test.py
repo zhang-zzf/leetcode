@@ -20,10 +20,12 @@ class Solution:
                            nums2: List[int]) -> List[int]:
         mapping: dict[int, int] = {}
         stack: list[int] = []
-        # reversed()
+        # TODO reversed()
         for x in reversed(nums2):
+            # TODO while stack
             while stack and stack[- 1] <= x:
                 stack.pop()
+            # TODO stack[- 1]
             mapping[x] = stack[- 1] if stack else -1
             stack.append(x)
         return [mapping[x] for x in nums1]
