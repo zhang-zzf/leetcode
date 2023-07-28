@@ -19,12 +19,26 @@ func Test_givenNormal_when94_thenSuccess(t *testing.T) {
  * }
  */
 func inorderTraversal(root *TreeNode) []int {
-	if root == nil {
-		return []int{}
+	var ans []int
+	for root != nil {
+		if root.Left != nil {
+			predecessor := root.Left
+			for predecessor.Right != nil && predecessor.Right != root {
+				predecessor = predecessor.Right
+			}
+			if predecessor.Right == nil {
+				predecessor.Right = root
+				root = root.Left
+				continue
+			} else {
+				predecessor.Right = nil
+			}
+		}
+		// inorder traversal
+		ans = append(ans, root.Val)
+		root = root.Right
 	}
-	left := inorderTraversal(root.Left)
-	right := inorderTraversal(root.Right)
-	return append(append(left, root.Val), right...)
+	return ans
 }
 
 //leetcode submit region end(Prohibit modification and deletion)

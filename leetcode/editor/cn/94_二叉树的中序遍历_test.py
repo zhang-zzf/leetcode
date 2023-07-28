@@ -25,11 +25,25 @@ class TestSolution(unittest.TestCase):
 #         self.right = right
 class Solution:
     def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
-        if root is None:
-            return []
-        left = self.inorderTraversal(root.left)
-        right = self.inorderTraversal(root.right)
-        return left + [root.val] + right
+        ans: list[any] = []
+        while root:
+            # left -> Node -> right
+            if root.left:
+                predecessor = root.left
+                while predecessor.right and predecessor.right != root:
+                    predecessor = predecessor.right
+                if predecessor.right is None:
+                    # iterate left
+                    predecessor.right = root
+                    root = root.left
+                    continue
+                else:
+                    # reset tree
+                    predecessor.right = None
+            # Node
+            ans.append(root.val)
+            root = root.right
+        return ans
         pass
 
 

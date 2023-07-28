@@ -46,6 +46,8 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.assertj.core.api.BDDAssertions.then;
+
 
 class BinaryTreeInorderTraversalTest {
 
@@ -53,7 +55,9 @@ class BinaryTreeInorderTraversalTest {
 
     @Test
     void givenNormal_when_thenSuccess() {
-
+        TreeNode tree = TreeNode.decode("[1,null,2,3]");
+        List<Integer> ans = solution.inorderTraversal(tree);
+        then(ans).containsExactly(1, 3, 2);
     }
 
     //leetcode submit region begin(Prohibit modification and deletion)
@@ -76,13 +80,31 @@ class BinaryTreeInorderTraversalTest {
     class Solution {
 
         public List<Integer> inorderTraversal(TreeNode root) {
-            if (root == null) {
-                return new ArrayList<>(0);
+            List<Integer> ans = new ArrayList<>(0);
+            while (root != null) {
+                // left -> Node -> right
+                // left
+                if (root.left != null) {
+                    TreeNode predecessor = root.left;
+                    while (predecessor.right != null && predecessor.right != root) {
+                        predecessor = predecessor.right;
+                    }
+                    if (predecessor.right == null) {
+                        // iterate left
+                        predecessor.right = root;
+                        root = root.left;
+                        continue;
+                    } else {
+                        // left was already iterated
+                        // roll back changes to the tree
+                        predecessor.right = null;
+                    }
+                }
+                // Node
+                ans.add(root.val);
+                // right
+                root = root.right;
             }
-            List<Integer> ans = new ArrayList<>();
-            ans.addAll(inorderTraversal(root.left));
-            ans.add(root.val);
-            ans.addAll(inorderTraversal(root.right));
             return ans;
         }
 
