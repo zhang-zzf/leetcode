@@ -6,6 +6,26 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
+func encodeTreeNode(root *TreeNode) []any {
+	var ans []any
+	queue := []*TreeNode{root}
+	for len(queue) > 0 {
+		node := queue[0]
+		queue = queue[1:]
+		if node == nil {
+			ans = append(ans, nil)
+		} else {
+			ans = append(ans, node.Val)
+			queue = append(queue, node.Left, node.Right)
+		}
+	}
+	// remove all the tail nil
+	for i := len(ans) - 1; i >= 0 && ans[i] == nil; i-- {
+		ans = ans[:i]
+	}
+	return ans
+}
+
 func decodeTreeNode(nodes []any) *TreeNode {
 	if len(nodes) == 0 {
 		return nil
