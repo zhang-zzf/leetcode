@@ -85,15 +85,10 @@ class IsomorphicStringsTest {
             for (int i = 0; i < s.length(); i++) {
                 int sc = s.charAt(i);
                 char tc = t.charAt(i);
-                if (m1[sc] == NO_SET) {
-                    if (m2[tc] == NO_SET || m2[tc] == sc) {
-                        m1[sc] = tc;
-                        m2[tc] = sc;
-                    } else {
-                        ans = false;
-                        break;
-                    }
-                } else if (m1[sc] != tc) {
+                if ((m1[sc] == NO_SET && m2[tc] == NO_SET)) {
+                    m1[sc] = tc;
+                    m2[tc] = sc;
+                } else if (m1[sc] != tc || m2[tc] != sc) {
                     ans = false;
                     break;
                 }
