@@ -25,3 +25,18 @@ func Test_givenStack_when_thenSuccess(t *testing.T) {
 		assert.Contains(t, []any{nil, A}, topVal)
 	}
 }
+
+/**
+Queue
+*/
+func Test_givenQueue_when_thenSuccess(t *testing.T) {
+	var queue []any
+	// add to tail
+	queue = append(queue, 0, 1, 2)
+	// peek the header
+	assert.Equal(t, 0, queue[0])
+	// remove from the header
+	_ = queue[0]
+	queue = queue[1:]
+	assert.Equal(t, 1, queue[0])
+}
