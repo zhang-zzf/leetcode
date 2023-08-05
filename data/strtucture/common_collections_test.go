@@ -10,19 +10,24 @@ const A = "A"
 
 /**
 Stack
+using Slice
 */
-func Test_givenStack_when_thenSuccess(t *testing.T) {
-	stack := list.New()
-	// push
-	stack.PushBack(A)
-	stack.PushBack(nil)
-	// Peek
-	top := stack.Back()
-	assert.Equal(t, nil, top.Value)
+func Test_givenStack_whenUsingSlice_thenSuccess(t *testing.T) {
+	var stack []any
+	// Push
+	stack = append(stack, 1, 2, 3)
 	// Pop
-	for stack.Len() > 0 {
-		topVal := stack.Remove(stack.Back())
-		assert.Contains(t, []any{nil, A}, topVal)
+	top := stack[len(stack)-1]
+	stack = stack[:len(stack)-1]
+	assert.Equal(t, 3, top)
+	// Pop again
+	top = stack[len(stack)-1]
+	stack = stack[:len(stack)-1]
+	assert.Equal(t, 2, top)
+	// pop all
+	for len(stack) > 0 {
+		top = stack[len(stack)-1]
+		stack = stack[:len(stack)-1]
 	}
 }
 
@@ -39,4 +44,22 @@ func Test_givenQueue_when_thenSuccess(t *testing.T) {
 	_ = queue[0]
 	queue = queue[1:]
 	assert.Equal(t, 1, queue[0])
+}
+
+/**
+Stack
+*/
+func Test_givenStack_when_thenSuccess(t *testing.T) {
+	stack := list.New()
+	// push
+	stack.PushBack(A)
+	stack.PushBack(nil)
+	// Peek
+	top := stack.Back()
+	assert.Equal(t, nil, top.Value)
+	// Pop
+	for stack.Len() > 0 {
+		topVal := stack.Remove(stack.Back())
+		assert.Contains(t, []any{nil, A}, topVal)
+	}
 }
