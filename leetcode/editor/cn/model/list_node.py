@@ -6,6 +6,6 @@ from __future__ import annotations
 
 
 class ListNode:
-    def __init__(self, val=0, nextNode: ListNode = None):
+    def __init__(self, val=0, next_node: ListNode = None):
         self.val = val
-        self.next = nextNode
+        self.next = next_node
