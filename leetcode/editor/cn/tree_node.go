@@ -40,7 +40,7 @@ func decodeTreeNode(nodes []any) *TreeNode {
 			continue
 		}
 		leftFilled := false
-		for i := 0; i < Min(2, len(nodes)); i++ {
+		for i := 0; i < 2 && len(nodes) > 0; i++ {
 			v := nodes[0]
 			nodes = nodes[1:]
 			// 三目 不存在
