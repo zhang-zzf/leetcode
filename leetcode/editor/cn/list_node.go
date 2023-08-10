@@ -5,7 +5,7 @@ type ListNode struct {
 	Next *ListNode
 }
 
-func NewListFromSlice(nums []int) *ListNode {
+func NewList(nums []int) *ListNode {
 	dummy := &ListNode{Val: 0}
 	ptr := dummy
 	for _, num := range nums {

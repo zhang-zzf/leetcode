@@ -6,12 +6,12 @@ import (
 )
 
 func Test_givenNormal_when125_thenSuccess(t *testing.T) {
-	palindrome := isPalindrome("A man, a plan, a canal: Panama")
+	palindrome := isPalindrome125("A man, a plan, a canal: Panama")
 	assert.Equal(t, true, palindrome)
 }
 
 //leetcode submit region begin(Prohibit modification and deletion)
-func isPalindrome(s string) bool {
+func isPalindrome125(s string) bool {
 	ans := true
 	left, right := 0, len(s)-1
 	for left < right {

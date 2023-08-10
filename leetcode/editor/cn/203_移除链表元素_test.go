@@ -6,7 +6,7 @@ import (
 )
 
 func Test_givenNormal_when203_thenSuccess(t *testing.T) {
-	list := NewListFromSlice([]int{7, 7, 7})
+	list := NewList([]int{7, 7, 7})
 	assert.Nil(t, removeElements(list, 7))
 }
 
