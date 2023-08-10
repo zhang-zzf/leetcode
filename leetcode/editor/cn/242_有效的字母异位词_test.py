@@ -14,22 +14,21 @@ class TestSolution(unittest.TestCase):
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
-        s_cnt: dict[str, int] = {}
-        t_cnt: dict[str, int] = {}
-        for c in s:
-            cnt = s_cnt.get(c)
-            s_cnt[c] = 1 if cnt is None else cnt + 1
-        for c in t:
-            cnt = t_cnt.get(c)
-            t_cnt[c] = 1 if cnt is None else cnt + 1
-        if len(s_cnt) != len(t_cnt):
+        if len(s) != len(t):
             return False
-        ans = True
-        for k, v in s_cnt.items():
-            if t_cnt.get(k) != v:
-                ans = False
-                break
-        return ans
+        cnt_map: dict[str, int] = {}
+        for c in s:
+            cnt = cnt_map.get(c)
+            cnt_map[c] = 1 if cnt is None else cnt + 1
+        for c in t:
+            cnt = cnt_map.get(c)
+            if cnt is None or cnt - 1 < 0:
+                return False
+            if cnt - 1 == 0:
+                del cnt_map[c]
+            else:
+                cnt_map[c] = cnt - 1
+        return len(cnt_map) == 0
 
 
 # leetcode submit region end(Prohibit modification and deletion)
