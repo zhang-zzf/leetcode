@@ -10,42 +10,36 @@ func Test_givenNormal_when264_thenSuccess(t *testing.T) {
 }
 
 //leetcode submit region begin(Prohibit modification and deletion)
-type Item struct {
-	nth    int
-	factor int
-	ugly   int
-}
-
 func nthUglyNumber(n int) int {
 	// TODO PriorityQueue
-	dp := make([]int, n+1)
-	pq := []*Item{
-		{1, 2, 2},
-		{1, 3, 2},
-		{1, 5, 2},
-	}
+	ugly := make([]int, n+1)
+	ugly[1] = 1
+	p2, p3, p5 := 1, 1, 1
 	for i := 2; i <= n; i++ {
-		min := nthUglyNumberMin(pq, dp)
-		if min == dp[len(dp)-1] {
-			i -= 1
-			continue
+		n2, n3, n5 := ugly[p2]*2, ugly[p3]*3, ugly[p5]*5
+		nextUgly := nthUglyNumberMin(n2, n3, n5)
+		ugly[i] = nextUgly
+		if nextUgly == n2 {
+			p2 += 1
 		}
-		dp = append(dp, min)
+		if nextUgly == n3 {
+			p3 += 1
+		}
+		if nextUgly == n5 {
+			p5 += 1
+		}
 	}
-	return dp[n]
+	return ugly[n]
 }
 
-func nthUglyNumberMin(pq []*Item, dp []int) int {
-	ans := pq[0]
-	for i := 0; i < len(pq); i++ {
-		pq[i].ugly = dp[pq[i].nth] * pq[i].factor
-		if pq[i].ugly < ans.ugly {
-			ans = pq[i]
+func nthUglyNumberMin(args ...int) int {
+	ans := args[0]
+	for i := 0; i < len(args); i++ {
+		if args[i] < ans {
+			ans = args[i]
 		}
 	}
-	// update the pq
-	ans.nth += 1
-	return ans.ugly
+	return ans
 }
 
 //leetcode submit region end(Prohibit modification and deletion)

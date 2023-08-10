@@ -1,4 +1,3 @@
-import queue
 import unittest
 
 
@@ -14,24 +13,17 @@ class TestSolution(unittest.TestCase):
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def nthUglyNumber(self, n: int) -> int:
-        dp = [0, 1]
-        pq = queue.PriorityQueue(maxsize=3)
-        pq.put((2, [1, 2]))
-        pq.put((3, [1, 3]))
-        pq.put((5, [1, 5]))
-        x = 2
-        while x <= n:
-            ugly, item = pq.get()
-            if ugly != dp[-1]:
-                dp.append(ugly)
-                x += 1
-            item[0] += 1
-            pq.put((dp[item[0]] * item[1], item))
-        return dp[n]
-
-
-# leetcode submit region end(Prohibit modification and deletion)
-
-
-if __name__ == '__main__':
-    unittest.main()
+        ugly = [1] * (n + 1)
+        p2, p3, p5 = 1, 1, 1
+        for x in range(2, n + 1):
+            n2, n3, n5 = ugly[p2] * 2, ugly[p3] * 3, ugly[p5] * 5
+            next_ugly = min(n2, n3, n5)
+            ugly[x] = next_ugly
+            # watch out
+            if next_ugly == n2:
+                p2 += 1
+            if next_ugly == n3:
+                p3 += 1
+            if next_ugly == n5:
+                p5 += 1
+        return ugly[n]
