@@ -14,13 +14,8 @@ class TestSolution(unittest.TestCase):
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
-        cnt = [0] * 26
-        for c in s:
-            cnt[ord(c) - ord('a')] += 1
-        for c in t:
-            cnt[ord(c) - ord('a')] -= 1
-        for c in cnt:
-            if c != 0:
+        for x in range(ord('a'), ord('z') + 1):
+            if s.count(chr(x)) != t.count(chr(x)):
                 return False
         return True
 
