@@ -12,15 +12,15 @@ func Test_givenNormal_when219_thenSuccess(t *testing.T) {
 //leetcode submit region begin(Prohibit modification and deletion)
 func containsNearbyDuplicate(nums []int, k int) bool {
 	ans := false
+	window := map[int]struct{}{}
 	for i, item := range nums {
-		for j := 1; j <= k; j++ {
-			if i+j < len(nums) && item == nums[i+j] {
-				ans = true
-				break
-			}
-		}
-		if ans == true {
+		if _, exists := window[item]; exists {
+			ans = true
 			break
+		}
+		window[item] = struct{}{}
+		if len(window) > k {
+			delete(window, nums[i-k])
 		}
 	}
 	return ans

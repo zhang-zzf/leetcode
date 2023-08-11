@@ -40,7 +40,9 @@
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 
 class ContainsDuplicateIiTest {
@@ -57,13 +59,13 @@ class ContainsDuplicateIiTest {
 
         public boolean containsNearbyDuplicate(int[] nums, int k) {
             boolean ans = false;
-            Map<Integer, Integer> window = new HashMap<>((int) (k * 1.5));
+            Set<Integer> window = new HashSet<>((int) (k * 1.5));
             for (int i = 0; i < nums.length; i++) {
-                if (window.containsKey(nums[i])) {
+                if (window.contains(nums[i])) {
                     ans = true;
                     break;
                 } else {
-                    window.put(nums[i], i);
+                    window.add(nums[i]);
                 }
                 if (window.size() > k) {
                     window.remove(nums[i - k]);
