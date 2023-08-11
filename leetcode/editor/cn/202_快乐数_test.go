@@ -21,7 +21,6 @@ func isHappy(n int) bool {
 			ans = true
 			break
 		} else if n == 4 {
-			ans = false
 			break
 		}
 	}

@@ -21,15 +21,15 @@ class Solution:
     def containsNearbyDuplicate(self, nums: List[int], k: int) -> bool:
         # 滑动窗口
         ans = False
-        window: dict[int, bool] = {}
+        window: set[int] = set()
         for idx, item in enumerate(nums):
-            if window.get(item):
+            if item in window:
                 ans = True
                 break
             else:
-                window[item] = True
+                window.add(item)
             if len(window) > k:
-                del window[nums[idx - k]]
+                window.remove(nums[idx - k])
         return ans
         pass
 
