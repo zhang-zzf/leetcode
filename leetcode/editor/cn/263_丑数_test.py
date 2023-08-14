@@ -7,7 +7,7 @@ class TestSolution(unittest.TestCase):
         self.solution = Solution()
 
     def test_givenNormal_when_thenSuccess(self):
-        self.assertTrue(True, "ShouldBeTrue")
+        self.assertFalse(self.solution.isUgly(14))
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
@@ -18,7 +18,7 @@ class Solution:
             ugly = False
             for f in factors:
                 if n % f == 0:
-                    n /= f
+                    n //= f
                     ugly = True
             if not ugly:
                 break

@@ -62,7 +62,7 @@ func nthUglyNumberMin1201(args ...int) int {
 
 // TODO  lcm gcd 都是针对正整数
 /**
-最小公约数
+最小公倍数
 
 least common multiple
 */

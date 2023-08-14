@@ -10,7 +10,7 @@ class TestSolution(unittest.TestCase):
     def test_givenNormal_when_thenSuccess(self):
         left, right = 0, 6
         while left <= right:
-            mid = left + (right - left) >> 1
+            mid = left + ((right - left) >> 1)
             print(mid)
             if mid == 1:
                 break

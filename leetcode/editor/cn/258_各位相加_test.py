@@ -7,6 +7,9 @@ class TestSolution(unittest.TestCase):
         self.solution = Solution()
 
     def test_givenNormal_when_thenSuccess(self):
+        self.assertEqual(0 % 9, 0)
+        self.assertEqual(1 % 9, 1)
+        self.assertEqual(-1 % 9, 8)
         self.assertEqual(2, self.solution.addDigits(38))
         self.assertEqual(0, self.solution.addDigits(0))
 

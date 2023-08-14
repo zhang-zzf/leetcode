@@ -42,11 +42,9 @@ func (this *MyQueue) Pop() int {
 
 func (this *MyQueue) tailToHead() {
 	if len(this.head) == 0 {
-		if len(this.tail) != 0 {
-			for len(this.tail) > 0 {
-				this.head = append(this.head, this.tail[len(this.tail)-1])
-				this.tail = this.tail[:len(this.tail)-1]
-			}
+		for len(this.tail) > 0 {
+			this.head = append(this.head, this.tail[len(this.tail)-1])
+			this.tail = this.tail[:len(this.tail)-1]
 		}
 	}
 }

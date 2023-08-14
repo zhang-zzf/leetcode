@@ -8,6 +8,14 @@ public class ListNode {
     public ListNode() {
     }
 
+    public static ListNode newList(int[] nums) {
+        ListNode head = null;
+        for (int i = nums.length - 1; i >= 0; i--) {
+            head = new ListNode(nums[i], head);
+        }
+        return head;
+    }
+
     public ListNode(int val) {
         this.val = val;
     }
