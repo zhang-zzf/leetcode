@@ -5,7 +5,7 @@ from typing import List
 class TestSolution(unittest.TestCase):
 
     def setUp(self) -> None:
-        self.solution = NumArray()
+        self.solution = NumArray([])
 
     def test_givenNormal_when_thenSuccess(self):
         self.assertTrue(True, "ShouldBeTrue")
