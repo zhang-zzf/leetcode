@@ -7,7 +7,7 @@ from __future__ import annotations
 from typing import Optional
 
 
-class ListNode:
+class ListNode(object):
     @classmethod
     def new_list(cls, nodes: list[int]) -> Optional[ListNode]:
         if nodes is None or len(nodes) == 0:
@@ -20,3 +20,7 @@ class ListNode:
     def __init__(self, val=0, next_node: ListNode = None):
         self.val = val
         self.next = next_node
+
+    # toString()
+    def __str__(self) -> str:
+        return f'{{"val": {self.val}}}'
