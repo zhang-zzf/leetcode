@@ -13,7 +13,19 @@ class TestSolution(unittest.TestCase):
 
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
+
     def intersection(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        ans = []
+        base_cnt = {}
+        for x in nums1:
+            base_cnt[x] = 1
+        for x in nums2:
+            if x in base_cnt:
+                del base_cnt[x]
+                ans.append(x)
+        return ans
+
+    def intersection1(self, nums1: List[int], nums2: List[int]) -> List[int]:
         base_cnt = {}
         for x in nums1:
             base_cnt[x] = 1
