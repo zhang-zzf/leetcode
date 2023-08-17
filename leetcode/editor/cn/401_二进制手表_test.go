@@ -1,7 +1,9 @@
 package leetcode
 
 import (
+	"fmt"
 	"github.com/stretchr/testify/assert"
+	"math/bits"
 	"strconv"
 	"testing"
 )
@@ -13,6 +15,21 @@ func Test_givenNormal_when401_thenSuccess(t *testing.T) {
 
 //leetcode submit region begin(Prohibit modification and deletion)
 func readBinaryWatch(turnedOn int) []string {
+	var ans []string
+	// 暴力破解
+	for h := uint8(0); h < 12; h++ {
+		hc := bits.OnesCount8(h)
+		for m := uint8(0); m < 60; m++ {
+			if hc+bits.OnesCount8(m) == turnedOn {
+				// TODO fmt https://pkg.go.dev/fmt#Sprintf
+				ans = append(ans, fmt.Sprintf("%d:%02d", h, m))
+			}
+		}
+	}
+	return ans
+}
+
+func readBinaryWatch1(turnedOn int) []string {
 	if turnedOn > 8 {
 		return []string{}
 	}
