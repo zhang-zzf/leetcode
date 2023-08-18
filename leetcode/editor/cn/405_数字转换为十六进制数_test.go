@@ -8,6 +8,7 @@ import (
 func Test_givenNormal_when405_thenSuccess(t *testing.T) {
 	assert.Equal(t, "1a", toHex(26))
 	assert.Equal(t, "ffffffff", toHex(-1))
+	assert.Equal(t, "ffff0001", toHex(-0xffff))
 }
 
 /**
@@ -22,14 +23,13 @@ func toHex(num int) string {
 	if num == 0 {
 		return "0"
 	}
+	ans := ""
 	hexTab := []string{"0", "1", "2", "3", "4", "5", "6", "7",
 		"8", "9", "a", "b", "c", "d", "e", "f"}
-	mask := uint32(0x0f)
-	ans := ""
-	n := uint32(num)
+	// TODO GO -1 = 0xffffffffffffffff 且 Go 中无无符号右移
+	mask, n := uint32(0x0f), uint32(num)
 	for n != 0 {
-		lastFourBits := n & mask
-		ans = hexTab[lastFourBits] + ans
+		ans = hexTab[(n&mask)] + ans
 		n >>= 4
 	}
 	return ans
