@@ -52,7 +52,7 @@ func thirdMax(nums []int) int {
 			m1, m2, m3 = n, m1, m2
 		} else if n > m2 {
 			m2, m3 = n, m2
-		} else if n != m2 && n > m3 {
+		} else if n > m3 {
 			m3 = n
 		}
 	}

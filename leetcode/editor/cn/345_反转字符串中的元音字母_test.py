@@ -1,4 +1,5 @@
 import unittest
+from typing import Set
 
 
 class TestSolution(unittest.TestCase):
@@ -16,7 +17,7 @@ class Solution:
     def reverseVowels(self, s: str) -> str:
         # TODO str => list[str]
         split: list[str] = list(s)
-        vowels = {
+        vowels: set[str] = {
             'a', 'e', 'i', 'o', 'u',
             'A', 'E', 'I', 'O', 'U'
         }
