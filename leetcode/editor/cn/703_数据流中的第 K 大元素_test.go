@@ -8,7 +8,7 @@ import (
 )
 
 func Test_givenNormal_when703_thenSuccess(t *testing.T) {
-	kth := Constructor(3, []int{4, 5, 8, 2})
+	kth := Constructor703(3, []int{4, 5, 8, 2})
 	assert.Equal(t, 4, kth.Add(3))
 	assert.Equal(t, 5, kth.Add(5))
 	assert.Equal(t, 5, kth.Add(10))
@@ -36,7 +36,7 @@ func (r *KthLargest) Pop() any {
 	return ans
 }
 
-func Constructor(k int, nums []int) KthLargest {
+func Constructor703(k int, nums []int) KthLargest {
 	kth := KthLargest{k: k}
 	for _, n := range nums {
 		kth.Add(n)
