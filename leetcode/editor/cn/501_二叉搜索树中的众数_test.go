@@ -54,6 +54,36 @@ func Test_givenFailedCase1_when501_thenSuccess(t *testing.T) {
  */
 func findMode(root *TreeNode) []int {
 	var ans []int
+	var pre *TreeNode
+	cnt, maxCount := 1, 1
+	var dfs func(*TreeNode)
+	dfs = func(n *TreeNode) {
+		if n == nil {
+			return
+		}
+		dfs(n.Left)
+		//
+		if pre != nil && n.Val == pre.Val {
+			cnt += 1
+		} else {
+			cnt = 1
+		}
+		if cnt == maxCount {
+			ans = append(ans, n.Val)
+		} else if cnt > maxCount {
+			ans = []int{n.Val}
+			maxCount = cnt
+		}
+		pre = n
+		//
+		dfs(n.Right)
+	}
+	dfs(root)
+	return ans
+}
+
+func findMode1(root *TreeNode) []int {
+	var ans []int
 	var preNode *TreeNode
 	cnt, maxCnt := 1, 1
 	for root != nil {

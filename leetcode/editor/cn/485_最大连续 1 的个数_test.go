@@ -11,6 +11,7 @@ func Test_givenNormal_when485_thenSuccess(t *testing.T) {
 
 //leetcode submit region begin(Prohibit modification and deletion)
 func findMaxConsecutiveOnes(nums []int) int {
+	// TODO 注意不能使用 0 判别
 	cnt, maxCnt := 0, 0
 	for _, n := range nums {
 		if n == 1 {

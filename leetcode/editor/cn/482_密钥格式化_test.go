@@ -27,7 +27,7 @@ func licenseKeyFormatting(s string, k int) string {
 	var chars []byte
 	ck := 0
 	for i := len(s) - 1; i >= 0; i-- {
-		// 注意 判断顺序
+		// TODO 注意 判断顺序
 		c := s[i]
 		if c == '-' {
 			continue

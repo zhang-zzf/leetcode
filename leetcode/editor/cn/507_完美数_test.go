@@ -19,6 +19,7 @@ func Test_givenFailedCase1_when507_thenSuccess(t *testing.T) {
 //leetcode submit region begin(Prohibit modification and deletion)
 func checkPerfectNumber(num int) bool {
 	sum := 1
+	// TODO 注意，这里是向下取整
 	sqrt := int(math.Sqrt(float64(num)))
 	for i := 2; i <= sqrt; i++ {
 		if num%i == 0 {
