@@ -1,8 +1,10 @@
 package strtucture
 
 import (
+	"container/heap"
 	"container/list"
 	"github.com/stretchr/testify/assert"
+	"sort"
 	"testing"
 )
 
@@ -61,5 +63,58 @@ func Test_givenStack_when_thenSuccess(t *testing.T) {
 	for stack.Len() > 0 {
 		topVal := stack.Remove(stack.Back())
 		assert.Contains(t, []any{nil, A}, topVal)
+	}
+}
+
+type IntMinPQ struct {
+	sort.IntSlice
+}
+
+//add x as element Len()
+func (r *IntMinPQ) Push(x any) { r.IntSlice = append(r.IntSlice, x.(int)) }
+
+//remove and return element Len() - 1.
+func (r *IntMinPQ) Pop() any {
+	n := r.Len()
+	val := r.IntSlice[n-1]
+	r.IntSlice = r.IntSlice[:n-1]
+	return val
+}
+
+/**
+heap
+min-heap
+*/
+func Test_givenMinHeap_when_thenSuccess(t *testing.T) {
+	aSlice := []int{5, 4, 3, 2, 1}
+	pq := &IntMinPQ{}
+	for _, n := range aSlice {
+		heap.Push(pq, n)
+		assert.Equal(t, n, pq.IntSlice[0])
+	}
+	for i := len(aSlice) - 1; i >= 0; i-- {
+		assert.Equal(t, aSlice[i], heap.Pop(pq))
+	}
+}
+
+type IntMaxPQ struct {
+	IntMinPQ
+}
+
+func (x *IntMaxPQ) Less(i, j int) bool { return x.IntSlice[i] > x.IntSlice[j] }
+
+/**
+heap
+max-heap
+*/
+func Test_givenMaxHeap_when_thenSuccess(t *testing.T) {
+	aSlice := []int{1, 2, 3, 4, 5}
+	pq := &IntMaxPQ{}
+	for _, n := range aSlice {
+		heap.Push(pq, n)
+		assert.Equal(t, n, pq.IntSlice[0])
+	}
+	for i := len(aSlice) - 1; i >= 0; i-- {
+		assert.Equal(t, aSlice[i], heap.Pop(pq))
 	}
 }
