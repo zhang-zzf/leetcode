@@ -11,6 +11,7 @@ func Test_givenNormal_when724_thenSuccess(t *testing.T) {
 	assert.Equal(t, -1, pivotIndex([]int{1, 2, 3}))
 }
 
+// 找到左侧第一个值，记得 break
 func Test_givenFailedCase1_when724_thenSuccess(t *testing.T) {
 	assert.Equal(t, 2, pivotIndex([]int{-1, -1, 0, 0, -1, -1}))
 }
