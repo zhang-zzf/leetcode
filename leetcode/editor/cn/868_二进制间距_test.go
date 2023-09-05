@@ -11,6 +11,7 @@ func Test_givenNormal_when868_thenSuccess(t *testing.T) {
 
 //leetcode submit region begin(Prohibit modification and deletion)
 func binaryGap(n int) int {
+	// 33 的目的是 int 最大 32 位
 	i, ans, left := 0, 0, 33
 	for ; n > 0; n >>= 1 {
 		if n&1 == 1 {
