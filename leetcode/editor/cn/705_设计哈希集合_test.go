@@ -15,7 +15,7 @@ type MyHashSet struct {
 	data map[int]struct{}
 }
 
-func Constructor() MyHashSet {
+func Constructor705() MyHashSet {
 	return MyHashSet{map[int]struct{}{}}
 }
 
