@@ -6,12 +6,12 @@ import (
 )
 
 func Test_givenNormal_when575_thenSuccess(t *testing.T) {
-	ans := distributeCandies([]int{1, 1, 2, 3})
+	ans := distributeCandies575([]int{1, 1, 2, 3})
 	assert.Equal(t, 2, ans)
 }
 
 //leetcode submit region begin(Prohibit modification and deletion)
-func distributeCandies(candyType []int) int {
+func distributeCandies575(candyType []int) int {
 	diffMap := map[int]struct{}{}
 	for _, t := range candyType {
 		diffMap[t] = struct{}{}
