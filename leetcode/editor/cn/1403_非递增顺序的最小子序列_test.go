@@ -12,6 +12,7 @@ func Test_givenNormal_when1403_thenSuccess(t *testing.T) {
 
 //leetcode submit region begin(Prohibit modification and deletion)
 func minSubsequence(nums []int) []int {
+	// TODO
 	sort.Sort(sort.Reverse(sort.IntSlice(nums)))
 	ts, ls := 0, 0
 	for _, n := range nums {
