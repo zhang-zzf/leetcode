@@ -27,9 +27,7 @@ func findRelativeRanks(score []int) []string {
 		scoreToIdx[s] = i
 	}
 	// TODO sort
-	sort.Slice(score, func(i, j int) bool {
-		return score[i] > score[j]
-	})
+	sort.Slice(score, func(i, j int) bool { return score[i] > score[j] })
 	ans := make([]string, len(score))
 	for i, s := range score {
 		ans[scoreToIdx[s]] = decideTitle(i + 1)
