@@ -6,7 +6,7 @@ import (
 )
 
 func Test_givenNormal_when933_thenSuccess(t *testing.T) {
-	rc := Constructor()
+	rc := Constructor933()
 	assert.Equal(t, 1, rc.Ping(1))
 	assert.Equal(t, 2, rc.Ping(100))
 	assert.Equal(t, 3, rc.Ping(3001))
@@ -18,7 +18,7 @@ type RecentCounter struct {
 	count []int
 }
 
-func Constructor() RecentCounter {
+func Constructor933() RecentCounter {
 	return RecentCounter{}
 }
 

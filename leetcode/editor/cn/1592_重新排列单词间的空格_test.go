@@ -2,6 +2,7 @@ package leetcode
 
 import (
 	"github.com/stretchr/testify/assert"
+	"strings"
 	"testing"
 )
 
@@ -11,7 +12,19 @@ func Test_givenNormal_when1592_thenSuccess(t *testing.T) {
 }
 
 //leetcode submit region begin(Prohibit modification and deletion)
+// TODO 字符串操作
 func reorderSpaces(text string) string {
+	words := strings.Fields(text)
+	spaceCnt := strings.Count(text, " ")
+	lw := len(words) - 1
+	if lw == 0 {
+		return words[0] + strings.Repeat(" ", spaceCnt)
+	} else {
+		return strings.Join(words, strings.Repeat(" ", spaceCnt/lw)) + strings.Repeat(" ", spaceCnt%lw)
+	}
+}
+
+func reorderSpaces1(text string) string {
 	word, wc, space := 0, 0, 0
 	for _, c := range text {
 		if c == ' ' {
