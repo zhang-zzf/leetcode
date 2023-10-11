@@ -14,7 +14,7 @@ type ParkingSystem struct {
 	leftCnt [4]int
 }
 
-func Constructor(big int, medium int, small int) ParkingSystem {
+func Constructor1603(big int, medium int, small int) ParkingSystem {
 	return ParkingSystem{leftCnt: [4]int{0, big, medium, small}}
 }
 
