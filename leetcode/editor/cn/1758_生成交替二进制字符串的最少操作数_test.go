@@ -6,11 +6,11 @@ import (
 )
 
 func Test_givenNormal_when1758_thenSuccess(t *testing.T) {
-	assert.Equal(t, 1, minOperations("0100"))
+	assert.Equal(t, 1, minOperations1758("0100"))
 }
 
 //leetcode submit region begin(Prohibit modification and deletion)
-func minOperations(s string) int {
+func minOperations1758(s string) int {
 	_0, _1 := 0, 0
 	for _, c := range s {
 		if c == '0' {
