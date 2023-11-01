@@ -11,12 +11,12 @@ func Test_givenNormal_when1582_thenSuccess(t *testing.T) {
 		{1, 0, 0, 0},
 		{0, 1, 1, 0},
 		{0, 0, 0, 0}}
-	assert.Equal(t, 2, numSpecial(params))
+	assert.Equal(t, 2, numSpecial1582(params))
 }
 
 //leetcode submit region begin(Prohibit modification and deletion)
 // TODO 没有什么特出算法，最简单朴实的模拟就是最好的
-func numSpecial(mat [][]int) int {
+func numSpecial1582(mat [][]int) int {
 	m, n := len(mat), len(mat[0])
 	rowCnt := make([]int, m)
 	for r, row := range mat {
