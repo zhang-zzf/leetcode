@@ -52,51 +52,54 @@
 // 进阶：你可以设计实现一个时间复杂度为 O(m + n) 的算法解决此问题吗？ 
 //
 // Related Topics 数组 双指针 排序 
-// 👍 1911 👎 0
+// 👍 2511 👎 0
 
-
-import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.BDDAssertions.then;
 
+import org.junit.jupiter.api.Test;
 
-public class MergeSortedArrayTest {
 
-    final Solution solution = new Solution();
+class MergeSortedArrayTest {
 
-    @Test
-    void givenNormal_when_thenSuccess() {
-        int[] nums = {1, 2, 3, 0, 0, 0};
-        solution.merge(nums, 3, new int[]{2, 5, 6}, 3);
-        then(nums).containsExactly(1, 2, 2, 3, 5, 6);
-    }
+  final Solution solution = new Solution();
 
-    @Test
-    void givenFailCase1_when_thenSuccess() {
-        int[] nums = {0};
-        solution.merge(nums, 0, new int[]{1}, 1);
-        then(nums).containsExactly(1);
-    }
+  @Test
+  void givenNormal_when_thenSuccess() {
+    int[] nums = {1, 2, 3, 0, 0, 0};
+    solution.merge(nums, 3, new int[]{2, 5, 6}, 3);
+    then(nums).containsExactly(1, 2, 2, 3, 5, 6);
+  }
 
-    //leetcode submit region begin(Prohibit modification and deletion)
-    class Solution {
-
-        public void merge(int[] nums1, int m, int[] nums2, int n) {
-            for (int idx = nums1.length - 1; idx >= 0; idx--) {
-                if (n - 1 < 0) {
-                    break;
-                }
-                if (m - 1 >= 0 && nums1[m - 1] >= nums2[n - 1]) {
-                    nums1[idx] = nums1[m - 1];
-                    m -= 1;
-                } else {
-                    nums1[idx] = nums2[n - 1];
-                    n -= 1;
-                }
-            }
+  //leetcode submit region begin(Prohibit modification and deletion)
+  class Solution {
+    public void merge(int[] nums1, int m, int[] nums2, int n) {
+      int ptr = m + n - 1, ptr1 = m - 1, ptr2 = n - 1;
+      while (ptr2 >= 0) {
+        if (ptr1 < 0 || nums1[ptr1] <= nums2[ptr2]) {
+          nums1[ptr--] = nums2[ptr2--];
         }
-
+        else {
+          nums1[ptr--] = nums1[ptr1--];
+        }
+      }
     }
+
+    /**
+     * [0] 0 [1] 1
+     */
+    private void methodFailedCase1(int[] nums1, int m, int[] nums2, int n) {
+      int ptr = m + n - 1, ptr1 = m - 1, ptr2 = n - 1;
+      while (ptr2 >= 0) {
+        if (nums1[ptr1] <= nums2[ptr2]) {
+          nums1[ptr--] = nums2[ptr2--];
+        }
+        else {
+          nums1[ptr--] = nums1[ptr1--];
+        }
+      }
+    }
+  }
 //leetcode submit region end(Prohibit modification and deletion)
 
 
