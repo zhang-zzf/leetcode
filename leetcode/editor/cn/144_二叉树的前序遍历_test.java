@@ -54,7 +54,6 @@
 // 👍 1095 👎 0
 
 
-import lombok.var;
 import model.TreeNode;
 import org.junit.jupiter.api.Test;
 
